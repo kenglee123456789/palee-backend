@@ -11,13 +11,19 @@ const billRoutes = require('./routes/billRoute')
 const registrationRoutes = require('./routes/registrationRoute')
 const regisdetailRoutes = require('./routes/regisdetailRoutes')
 const paymentRoutes = require('./routes/paymentRoutes')
-
+const allow = ['https://palee-center.netlify.app'];
 const app = express();
 const port = 3000;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors(
+  origin: allow,
+  methods: [
+  'post', 'put', 'delete', 'get'
+  ],
+credentials: false,
+));
 
 app.use('/api', studentRoutes);
 app.use('/api', genderRoutes);
