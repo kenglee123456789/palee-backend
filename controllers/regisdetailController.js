@@ -10,4 +10,13 @@ const CreateRegisdetail = async (req, res) =>{
         res.status(500).send({message: 'Error adding regisdetail'});
     }
 }
-module.exports = {CreateRegisdetail}
+const showRegisdetail = async (req, res) => {
+    try {
+        const regisdetail = await regisdetailModel.getRegisdetail();
+        res.status(200).send(regisdetail);
+    } catch (error) {
+        console.error('Error', error);
+        res.status(500).send({ message: 'Error fetching regisdetail' });
+    }
+}
+module.exports = {CreateRegisdetail, showRegisdetail}
