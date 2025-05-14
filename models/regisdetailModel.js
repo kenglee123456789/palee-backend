@@ -12,7 +12,7 @@ const addRegistdetail = (regisID, subject, scholarship, Cost) =>{
   }
 const getRegisdetail =()=>{
     return new Promise((resolve, reject) => {
-        db.query('SELECT rd.regisID, std.stdName,std.Lastname, s.subName,s.phoneNumber, s.Contact, l.level FROM regisdetail rd INNER JOIN registration r ON rd.regisID = r.regisID INNER JOIN student std ON r.stdID = std.stdID INNER JOIN subjectdetail subdt ON rd.subDetailID = subdt.subDetailID INNER JOIN subject s ON subdt.subID = s.subID INNER JOIN level l ON subdt.levelID = l.levelID',
+        db.query('SELECT rd.regisID, std.stdName,std.Lastname, s.subName,std.phoneNumber, std.Contact, l.level FROM regisdetail rd INNER JOIN registration r ON rd.regisID = r.regisID INNER JOIN student std ON r.stdID = std.stdID INNER JOIN subjectdetail subdt ON rd.subDetailID = subdt.subDetailID INNER JOIN subject s ON subdt.subID = s.subID INNER JOIN level l ON subdt.levelID = l.levelID',
             (error, results) => {
                 if (error) reject(error);
                 resolve(results);
