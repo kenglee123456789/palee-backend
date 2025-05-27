@@ -31,14 +31,14 @@ const addStudent = async (req, res) => {
   try {
     if ((gender === "1" || gender === "3") && stayID === "2") {
       const count = await studentModel.countMaleInStay2();
-      if (count >= 100) {
+      if (count >= 150) {
         return res.status(400).send({ message: "Male dorm full" });
       }
     }
 
     if (gender === "2" && stayID === "2") {
       const count = await studentModel.countFeMaleInStay2();
-      if (count >= 50) {
+      if (count >= 80) {
         return res.status(400).send({ message: "FeMale dorm full" });
       }
     }
